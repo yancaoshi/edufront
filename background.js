@@ -1,26 +1,32 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, session} = require('electron');
+const path = require('path');
+const isDev = process.env.NODE_ENV === 'development';
 
-function createWindow() {
+function createWindow () {
   // 创建浏览器窗口
-  const win = new BrowserWindow({
-    width: 800,
-    height: 600,
+  let win = new BrowserWindow({
     webPreferences: {
       nodeIntegration: true,
-      contextIsolation: false, // 对于较新版本的Electron，你可能需要设置contextIsolation为false
+      contextIsolation: false
     }
   });
 
-  // 这里应该加载Vue应用的URL，如果你在开发模式下，它可能是Vue CLI的开发服务器地址
-  // 例如：http://localhost:8080
-  // 对于生产模式，你可能需要指向构建后的index.html文件
-  // 例如：`file://${__dirname}/dist/index.html`
-  win.loadURL('http://localhost:8080');
-  // 打开开发者工具
-  win.webContents.openDevTools();
+  // 清除会话数据和缓存
+  session.defaultSession.clearStorageData();
+
+  if (isDev) {
+    win.loadURL('http://localhost:8080/');
+    win.webContents.openDevTools();
+  } else {
+    win.loadFile(path.join(__dirname, 'dist/index.html'));
+  }
+
+  // win.maximize();
 }
 
 app.whenReady().then(createWindow);
+console.log('Current NODE_ENV:', process.env.NODE_ENV);
+
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {

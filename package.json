@@ -2,42 +2,55 @@
   "name": "edufront",
   "version": "0.1.0",
   "main": "background.js",
-  "description": "乐程教育前端平台",
+  "description": "乐程课时管理",
   "author": "Feng",
   "private": true,
+  "type": "module",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
-    "electron:serve": "vue-cli-service serve & electron .",
-    "electron:build": "vue-cli-service build && electron-builder"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test:unit": "vitest",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
+    "format": "prettier --write src/",
+    "electron:serve": "electron .",
+    "electron:build": "electron-builder"
   },
   "build": {
     "productName": "EduFront",
     "appId": "com.lecode.edufront",
     "win": {
-      "target": "nsis"
+      "target": "nsis",
+      "icon": "public/favicon.ico"
     },
     "mac": {
       "target": "dmg"
     }
   },
   "dependencies": {
+    "pinia": "^2.1.7",
+    "vue": "^3.4.15",
+    "vue-router": "^4.2.5",
     "axios": "^1.6.7",
-    "core-js": "^3.8.3",
+    "dmg-license": "^1.0.11",
     "element-plus": "^2.5.5",
-    "vue": "^3.2.13"
+    "@vitejs/plugin-vue": "^1.6.1",
+    "vite": "^2.5.4"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.16",
-    "@babel/eslint-parser": "^7.12.16",
-    "@vue/cli-plugin-babel": "~5.0.0",
-    "@vue/cli-plugin-eslint": "~5.0.0",
-    "@vue/cli-service": "~5.0.0",
+    "@rushstack/eslint-patch": "^1.3.3",
+    "@vitejs/plugin-vue": "^5.0.3",
+    "@vue/eslint-config-prettier": "^8.0.0",
+    "@vue/test-utils": "^2.4.4",
+    "eslint": "^8.49.0",
+    "eslint-plugin-vue": "^9.17.0",
+    "jsdom": "^24.0.0",
+    "prettier": "^3.0.3",
+    "vite": "^5.0.11",
+    "vitest": "^1.2.2",
+    "cross-env": "^7.0.3",
     "electron": "^28.2.1",
-    "electron-builder": "^24.9.1",
-    "eslint": "^7.32.0",
-    "eslint-plugin-vue": "^8.0.3"
+    "electron-builder": "^24.9.1"
   },
   "eslintConfig": {
     "root": true,
@@ -48,15 +61,6 @@
       "plugin:vue/vue3-essential",
       "eslint:recommended"
     ],
-    "parserOptions": {
-      "parser": "@babel/eslint-parser"
-    },
     "rules": {}
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not dead",
-    "not ie 11"
-  ]
+  }
 }
