@@ -1,5 +1,6 @@
-const { app, BrowserWindow, session} = require('electron');
-const path = require('path');
+// 使用 ES 模块的 import 语法替换原有的 require
+import { app, BrowserWindow, session } from 'electron';
+import path from 'path';
 const isDev = process.env.NODE_ENV === 'development';
 
 function createWindow () {

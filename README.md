@@ -1,42 +1,25 @@
 # edufront
 
-## Project setup
+A simple sample app for education front-end. Developed with Vue3 and designed with Element-Plus. 
+
+## References
+- [Vue3](https://v3.vuejs.org/guide/introduction.html)
+- [Element-Plus](https://element-plus.org/#/en-US)
+- [Element-Plus Figma Template](https://element-plus.org/en-US/resource/index.html)
+
+## Steps
+
+- Create project
 ```
 npm install -g create-vite
 npm install element-plus --save
 npm install axios --save
-
 ```
 
-### Compiles and hot-reloads for development
+- Run
 ```
 npm run dev
-```
-
-### Compiles and minifies for production
-```
 npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-- run electron
-```
-npm run electron:serve
-```
-
-- build with electron
-```
-npm run electron:build
-```
-
-设置环境变量用于区分开发和生产环境
-```
-export NODE_ENV=development # Linux
-set NODE_ENV=development # Windows
 ```
 
 ### Customize configuration

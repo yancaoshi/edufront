@@ -1,28 +1,50 @@
+<!-- <template>
+  <div ><TopNavbar /></div>
+</template> -->
 <template>
-  <div>
-    <TopNavbar /> <!-- 在页面顶部显示导航栏 -->
-    <router-view /> <!-- 路由视图，用于显示基于当前路由的组件 -->
+  <div class="header">
+    <TopNavbar />
+  </div>
+  <div class="main">
+    <router-view />
   </div>
 </template>
 
-<script>
-import TopNavbar from './components/TopNavbar.vue'
+<script setup>
 
-export default {
-  name: 'App',
-  components: {
-    TopNavbar // 注册 TopNavbar 使其可以在模板中使用
-  }
-}
+import TopNavbar from './components/TopNavbar.vue'
+import { RouterView } from 'vue-router'
+
+
 </script>
 
 <style>
+html {
+  box-sizing: border-box;
+}
+*, *::before, *::after {
+  box-sizing: inherit;
+}
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  font-family: "PingFang SC", "Helvetica Neue", Helvetica, "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.header {
+  width: 100%;
+  height: 60px;
+  display: flex;
+}
+
+.main {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>

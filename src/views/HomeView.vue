@@ -12,8 +12,8 @@
 </template>
 
 <script>
-import { ref, onMounted, computed } from 'vue'
-import axios from 'axios'
+import { ref, onMounted, computed } from 'vue';
+import axios from 'axios';
 
 export default {
   name: 'UsersTable',

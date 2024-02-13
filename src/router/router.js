@@ -2,15 +2,13 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from '../views/HomeView.vue';
 import StudentView from '../views/StudentView.vue';
-import ContractView from '../views/ContractView.vue';
-
 
 const routes = [
   {
     path: '/',
     name: 'Home',
     component: HomeView,
-  }
+  }, 
   {
     path: '/students',
     name: 'Student',
@@ -19,13 +17,22 @@ const routes = [
   {
     path: '/contracts',
     name: 'Contract',
-    component: ContractView,
+    component: () => import('../views/ContractView.vue'),
   },
-  // 其他路由配置...
+  {
+    path: '/payments',
+    name: 'Payment',
+    component: () => import('../views/PaymentView.vue'),
+  },
+  {
+    path: '/reports',
+    name: 'Report',
+    component: () => import('../views/ReportView.vue'),
+  },
 ];
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHistory(import.meta.env.VITE_BASE_URL),
   routes,
 });
 
